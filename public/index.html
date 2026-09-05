@@ -5,6 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>麺屋 ぶっとく生きろ。｜大阪・本町</title>
 <meta name="description" content="太く、熱く、旨い。国産もち小麦の手揉み極太ちぢれ麺と、昆布・豚・鶏の醤油スープ。大阪市中央区南本町、本町駅7・9番出口 徒歩1分。">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-BLYH7L3V1X"></script>
+<script>
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-BLYH7L3V1X');
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Yuji+Syuku&family=Anton&family=Shippori+Mincho+B1:wght@400;700;800&display=swap" rel="stylesheet">
@@ -504,7 +510,7 @@ img{display:block}
 
 <div style="background:#0a0908;padding:clamp(32px,5vw,64px) clamp(20px,5vw,56px);border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px">
 <img src="logo-brush-trim.png" alt="麺屋 ぶっとく生きろ。" width="1200" height="323" loading="lazy" decoding="async" style="height:clamp(34px,4vw,52px);width:auto;object-fit:contain;filter:invert(1)">
-<div style="font:400 clamp(10px,1.1vw,12px)/1.8 ui-monospace,Menlo,monospace;color:rgba(245,241,232,.42);text-align:right">MENYA BUTTOKUIKIRO<br>© 2026 麺屋 ぶっとく生きろ。</div>
+<div style="font:400 clamp(10px,1.1vw,12px)/1.8 ui-monospace,Menlo,monospace;color:rgba(245,241,232,.42);text-align:right">MENYA BUTTOKUIKIRO<br>© 2026 麺屋 ぶっとく生きろ。</div><p style="flex:1 1 100%;margin:18px 0 0;font-family:'Yuji Syuku',serif;font-weight:400;font-size:clamp(11px,1.15vw,13px);line-height:1.9;color:rgba(245,241,232,.42)">当サイトでは、サイトの利用状況を把握するために Google アナリティクスを利用しています。これにより、閲覧されたページや端末の情報などが Google へ送信されます。個人を特定する情報は送信していません。取り扱いについては<a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener" style="color:rgba(245,241,232,.62);text-decoration:none;border-bottom:1px solid rgba(245,241,232,.3)">Google のポリシーと規約</a>をご覧ください。ブラウザの設定でこの送信を無効にできます。</p>
 </div>
 
 
@@ -530,6 +536,21 @@ img{display:block}
       io.observe(el);
     });
   });
+})();
+(function(){
+  // 電話・メール・地図のタップを記録する
+  if(typeof gtag!=='function')return;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest && e.target.closest('a');
+    if(!a||!a.href)return;
+    var h=a.href, name=null;
+    if(h.indexOf('tel:')===0) name='tap_phone';
+    else if(h.indexOf('mailto:')===0) name='tap_email';
+    else if(h.indexOf('google.com/maps')>-1) name='tap_map';
+    else if(h.indexOf('instagram.com')>-1) name='tap_instagram';
+    else if(h.indexOf('x.com')>-1) name='tap_x';
+    if(name) gtag('event',name,{link_url:h,link_text:(a.textContent||'').trim().slice(0,60)});
+  },true);
 })();
 (function(){
   var v=document.getElementById('reel'), b=document.getElementById('reelsnd');
