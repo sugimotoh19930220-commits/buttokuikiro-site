@@ -309,7 +309,7 @@ LANGS['en'] = dict(
             ('Cola / ginger ale / oolong tea', '300 yen each'),
         ]),
     ],
-    menu_note='All prices include tax. Noodle size for mazesoba: 200g and 300g are the same price, 400g is 150 yen more. Ramen comes in one size. There is also a monthly special - see the poster inside the shop.',
+    menu_note='All prices include tax. Noodle size for mazesoba: 200g and 300g are the same price, 400g is 150 yen more. Ramen comes in one size. There is also a monthly special - see the poster inside the shop or our <a href="https://www.instagram.com/buttoi_men/" target="_blank" rel="noopener" style="color:rgba(245,241,232,.8);border-bottom:1px solid rgba(245,241,232,.4)">Instagram</a>.',
     how_lab='How to eat it',
     how_h2='Four steps for mazesoba',
     how_items=[
@@ -399,7 +399,7 @@ LANGS['ko'] = dict(
             ('콜라 / 진저에일 / 우롱차', '각 300엔'),
         ]),
     ],
-    menu_note='모든 가격은 세금 포함입니다. 마제소바의 면 양은 200g과 300g이 같은 가격, 400g은 150엔 추가입니다. 라멘은 한 종류입니다. 매월 바뀌는 기간 한정 메뉴도 있습니다. 가게 안 포스터를 봐 주세요.',
+    menu_note='모든 가격은 세금 포함입니다. 마제소바의 면 양은 200g과 300g이 같은 가격, 400g은 150엔 추가입니다. 라멘은 한 종류입니다. 매월 바뀌는 기간 한정 메뉴도 있습니다. 가게 안 포스터 또는 <a href="https://www.instagram.com/buttoi_men/" target="_blank" rel="noopener" style="color:rgba(245,241,232,.8);border-bottom:1px solid rgba(245,241,232,.4)">Instagram</a>을 봐 주세요.',
     how_lab='먹는 방법',
     how_h2='마제소바를 먹는 네 단계',
     how_items=[
@@ -489,7 +489,7 @@ LANGS['zh-hans'] = dict(
             ('可乐 / 姜汁汽水 / 乌龙茶', '各300日元'),
         ]),
     ],
-    menu_note='所有价格均含税。拌面的面量：200克与300克同价，400克加收150日元。拉面只有一种分量。另有每月更换的限定菜单，请看店内海报。',
+    menu_note='所有价格均含税。拌面的面量：200克与300克同价，400克加收150日元。拉面只有一种分量。另有每月更换的限定菜单，请看店内海报或我们的<a href="https://www.instagram.com/buttoi_men/" target="_blank" rel="noopener" style="color:rgba(245,241,232,.8);border-bottom:1px solid rgba(245,241,232,.4)">Instagram</a>。',
     how_lab='吃法',
     how_h2='拌面的四个步骤',
     how_items=[
@@ -579,7 +579,7 @@ LANGS['zh-hant'] = dict(
             ('可樂 / 薑汁汽水 / 烏龍茶', '各300日圓'),
         ]),
     ],
-    menu_note='所有價格均含稅。拌麵的麵量：200公克與300公克同價，400公克加收150日圓。拉麵只有一種分量。另有每月更換的限定菜單，請看店內海報。',
+    menu_note='所有價格均含稅。拌麵的麵量：200公克與300公克同價，400公克加收150日圓。拉麵只有一種分量。另有每月更換的限定菜單，請看店內海報或我們的<a href="https://www.instagram.com/buttoi_men/" target="_blank" rel="noopener" style="color:rgba(245,241,232,.8);border-bottom:1px solid rgba(245,241,232,.4)">Instagram</a>。',
     how_lab='吃法',
     how_h2='拌麵的四個步驟',
     how_items=[
