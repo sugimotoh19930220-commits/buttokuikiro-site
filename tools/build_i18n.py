@@ -185,7 +185,7 @@ gtag('config','%(ga)s');
 <section class="sec">
 <div class="wrap vid">
 <video src="/video-reel.mp4" poster="/video-poster.jpg" autoplay muted loop playsinline preload="metadata" width="720" height="1108" aria-label="%(alt_video)s" style="width:100%%;height:auto;background:#141210"></video>
-<p class="note" style="text-align:center">%(video_cap)s <a href="https://www.instagram.com/reel/DTr0Cuyj8bC/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">@koji_gourmate</a></p>
+<p class="note" style="text-align:center">%(video_cap_pre)s<a href="https://www.instagram.com/reel/DTr0Cuyj8bC/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">@koji_gourmate</a>%(video_cap_post)s</p>
 </div>
 </section>
 
@@ -244,7 +244,7 @@ gtag('config','%(ga)s');
         htmllang=L['htmllang'], title=L['title'], desc=L['desc'], base=BASE, path=p,
         hreflangs=hreflangs(), ga=GA, fonthref=L['fonthref'], fontvars=L['fontvars'], css=CSS,
         nav=langs_nav(code), nav_footer=langs_nav(code),
-        alt_hero=L['alt_hero'], alt_video=L['alt_video'], video_cap=L['video_cap'],
+        alt_hero=L['alt_hero'], alt_video=L['alt_video'], video_cap_pre=L['video_cap_pre'], video_cap_post=L['video_cap_post'],
         h1=L['h1'], hero_sub=L['hero_sub'], hero_meta=L['hero_meta'], promo=L['promo'],
         about_lab=L['about_lab'], about_h2=L['about_h2'], about_body=L['about_body'], cards=cards,
         menu_lab=L['menu_lab'], menu_h2=L['menu_h2'], menu=''.join(menu), menu_note=L['menu_note'],
@@ -266,7 +266,7 @@ LANGS['en'] = dict(
     desc='A ramen and mazesoba shop 1 minute from Hommachi Station, Osaka. Extra-thick hand-rubbed noodles made from Japanese mochi wheat. Mazesoba from 980 yen. 16 seats, cash and cards accepted.',
     alt_hero='Lifting the extra-thick noodles',
     alt_video='Cooking at MENYA BUTTOKUIKIRO',
-    video_cap='From an Instagram reel by',
+    video_cap_pre='Video courtesy of Instagram (', video_cap_post=')',
     h1='THICK. HOT. GOOD.',
     hero_sub='Hand-rubbed, extra-thick curly noodles made from Japanese mochi wheat. We rub every portion by hand after you order, so no two bowls feel exactly the same.',
     hero_meta='Opened 26 May 2025 &nbsp;/&nbsp; 1 min from Osaka Metro Hommachi Station, Exit 7 or 9 &nbsp;/&nbsp; Basement floor (B1)',
@@ -356,7 +356,7 @@ LANGS['ko'] = dict(
     desc='오사카 혼마치역에서 도보 1분. 일본산 찹쌀밀로 만든 손으로 주무른 굵은 면. 마제소바 980엔부터. 16석, 현금·카드 사용 가능.',
     alt_hero='굵은 면을 들어 올린 모습',
     alt_video='조리 모습',
-    video_cap='인스타그램 릴스 출처',
+    video_cap_pre='영상 제공: Instagram (', video_cap_post=')',
     h1='굵게, 뜨겁게, 맛있게.',
     hero_sub='일본산 찹쌀밀로 만든 굵은 곱슬면입니다. 주문을 받은 뒤 한 그릇씩 손으로 주물러 만들기 때문에, 같은 그릇이 하나도 없습니다.',
     hero_meta='2025년 5월 26일 오픈 &nbsp;/&nbsp; 오사카 메트로 혼마치역 7·9번 출구 도보 1분 &nbsp;/&nbsp; 지하 1층',
@@ -446,7 +446,7 @@ LANGS['zh-hans'] = dict(
     desc='距大阪地铁本町站步行1分钟。使用日本产糯小麦、点单后手工揉制的超粗面。拌面980日元起。16个座位，可用现金和信用卡。',
     alt_hero='挑起超粗面条',
     alt_video='店内烹调',
-    video_cap='来自Instagram短视频，作者',
+    video_cap_pre='影像提供：Instagram（', video_cap_post='）',
     h1='粗、烫、香。',
     hero_sub='使用日本产糯小麦制作的超粗卷面。每一份都在点单后手工揉制，所以没有两碗是完全一样的。',
     hero_meta='2025年5月26日开业 &nbsp;/&nbsp; 大阪地铁本町站7·9号出口步行1分钟 &nbsp;/&nbsp; 地下1层',
@@ -536,7 +536,7 @@ LANGS['zh-hant'] = dict(
     desc='距大阪地鐵本町站步行1分鐘。使用日本產糯小麥、點餐後手工揉製的超粗麵。拌麵980日圓起。16個座位，可用現金與信用卡。',
     alt_hero='挑起超粗麵條',
     alt_video='店內烹調',
-    video_cap='來自Instagram短影音，作者',
+    video_cap_pre='影像提供：Instagram（', video_cap_post='）',
     h1='粗、燙、香。',
     hero_sub='使用日本產糯小麥製作的超粗捲麵。每一份都在點餐後手工揉製，所以沒有兩碗是完全一樣的。',
     hero_meta='2025年5月26日開幕 &nbsp;/&nbsp; 大阪地鐵本町站7·9號出口步行1分鐘 &nbsp;/&nbsp; 地下1樓',
