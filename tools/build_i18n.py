@@ -185,7 +185,7 @@ gtag('config','%(ga)s');
 <section class="sec">
 <div class="wrap vid">
 <video src="/video-reel.mp4" poster="/video-poster.jpg" autoplay muted loop playsinline preload="metadata" width="720" height="1108" aria-label="%(alt_video)s" style="width:100%%;height:auto;background:#141210"></video>
-<p class="note" style="text-align:center">%(video_cap_pre)s<a href="https://www.instagram.com/reel/DTr0Cuyj8bC/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">@koji_gourmate</a>%(video_cap_post)s</p>
+<p class="note" style="text-align:center">%(video_cap_pre)s<a href="https://www.instagram.com/koji_gourmate/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none;border-bottom:1px solid currentColor">@koji_gourmate</a>%(video_cap_post)s</p>
 </div>
 </section>
 
