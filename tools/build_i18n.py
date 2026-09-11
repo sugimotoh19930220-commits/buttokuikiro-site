@@ -182,12 +182,16 @@ gtag('config','%(ga)s');
 </div>
 </section>
 
+<!-- 非表示 2026-09-11：Instagramリール動画と引用リンク。復活させるときは、このコメント行と下の終了コメント行の2行を削除してください。 -->
+<!--
 <section class="sec">
 <div class="wrap vid">
 <video src="/video-reel.mp4" poster="/video-poster.jpg" autoplay muted loop playsinline preload="metadata" width="720" height="1108" aria-label="%(alt_video)s" style="width:100%%;height:auto;background:#141210"></video>
 <p class="note" style="text-align:center">%(video_cap)s</p>
 </div>
 </section>
+-->
+<!-- 非表示ここまで -->
 
 <section class="sec">
 <div class="wrap">
