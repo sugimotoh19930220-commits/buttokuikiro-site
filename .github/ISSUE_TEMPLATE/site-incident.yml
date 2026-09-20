@@ -1,0 +1,51 @@
+name: 公式サイトの不具合・障害
+description: 表示崩れ、リンク切れ、閲覧不能などを報告します
+title: "[サイト障害] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        パスワード、APIキー、個人情報は入力しないでください。
+  - type: textarea
+    id: symptom
+    attributes:
+      label: 起きている症状
+      description: 何が起きているかを具体的に記載してください。
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: 対象ページ
+      placeholder: https://buttokuikiro.com/
+    validations:
+      required: true
+  - type: input
+    id: started
+    attributes:
+      label: 確認日時
+      placeholder: 2026-09-20 17:00頃
+    validations:
+      required: true
+  - type: dropdown
+    id: scope
+    attributes:
+      label: 影響範囲
+      options:
+        - サイト全体が見られない
+        - 一部ページが見られない
+        - 表示や文章の一部がおかしい
+        - 不明
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 確認した端末・ブラウザ
+      placeholder: 例）iPhone Safari、Mac Chrome
+  - type: textarea
+    id: expected
+    attributes:
+      label: 本来あるべき状態
+    validations:
+      required: true
