@@ -1,0 +1,59 @@
+name: 公式サイトの変更依頼
+description: ぶっとく生きろ。公式サイトの修正・追加・削除を依頼します
+title: "[サイト変更] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        公開前に確認用ページを作成し、承認後に本番へ反映します。
+        パスワード、APIキー、個人情報は入力しないでください。
+  - type: textarea
+    id: purpose
+    attributes:
+      label: 変更目的
+      description: なぜ変更するのかを記載してください。
+      placeholder: 例）営業時間変更を正しく案内するため
+    validations:
+      required: true
+  - type: textarea
+    id: target
+    attributes:
+      label: 変更する場所と内容
+      description: ページ名、現在の表示、変更後の表示を記載してください。
+      placeholder: |
+        対象：トップページの営業時間
+        現在：11:00〜22:00
+        変更後：11:30〜22:00
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 正本・根拠
+      description: 店舗で確定した情報や参照資料を記載してください。
+      placeholder: 例）店長確認済み、2026年9月20日から適用
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 完了条件
+      description: 何を確認できれば完了かを記載してください。
+      placeholder: 例）PCとスマートフォンで新しい営業時間が表示される
+    validations:
+      required: true
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: 緊急度
+      options:
+        - 通常
+        - 早め
+        - 緊急
+    validations:
+      required: true
+  - type: textarea
+    id: keep
+    attributes:
+      label: 変更してはいけない箇所
+      description: 現在のまま残す内容があれば記載してください。
