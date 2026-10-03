@@ -10,6 +10,7 @@
 日本語版（public/index.html）はこのスクリプトの対象外。手で編集する。
 """
 import os
+from build_news import home_section
 
 BASE = 'https://buttokuikiro.com'
 GA = 'G-BLYH7L3V1X'
@@ -91,14 +92,20 @@ def hreflangs():
 def build(code, L):
     p = PATHS[code]
     menu = []
-    menu.append('<div class="mgrp" id="tsukemen"><h3>%s</h3>' % L['tsukemen_heading'])
-    menu.append('<div class="mrow"><s>%s</s><em>%s</em></div>' % (L['tsukemen_name'], L['tsukemen_price']))
-    menu.append('<div class="end"></div><p>%s</p><p class="note">%s</p></div>' % (L['tsukemen_description'], L['tsukemen_note']))
-    for gname, items in L['menu_groups']:
+    for group_index, (gname, items) in enumerate(L['menu_groups']):
         menu.append('<div class="mgrp"><h3>%s</h3>' % gname)
         for name, price in items:
             menu.append('<div class="mrow"><s>%s</s><em>%s</em></div>' % (name, price))
-        menu.append('<div class="end"></div></div>')
+        menu.append('<div class="end"></div>')
+        if group_index == 0:
+            menu.append('<p class="menu-description">%s</p>' % MENU_DESCRIPTIONS[code][0])
+        elif group_index == 2:
+            menu.append('<p class="menu-description">%s</p>' % MENU_DESCRIPTIONS[code][1])
+        menu.append('</div>')
+        if group_index == 2:
+            menu.append('<div class="mgrp" id="tsukemen"><h3>%s</h3>' % L['tsukemen_heading'])
+            menu.append('<div class="mrow"><s>%s</s><em>%s</em></div>' % (L['tsukemen_name'], L['tsukemen_price']))
+            menu.append('<div class="end"></div><p>%s</p><p class="note">%s</p></div>' % (L['tsukemen_description'], L['tsukemen_note']))
     steps = []
     for n, t, d in L['how_items']:
         steps.append('<div class="step"><i>%s</i><div><b>%s</b><span>%s</span></div></div>' % (n, t, d))
@@ -135,6 +142,7 @@ gtag('config','%(ga)s');
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="%(fonthref)s" rel="stylesheet">
+<link rel="stylesheet" href="/news.css">
 <style>
 :root{%(fontvars)s}
 %(css)s
@@ -158,6 +166,8 @@ gtag('config','%(ga)s');
 <div class="badge">%(promo)s</div>
 </div>
 </section>
+
+%(news)s
 
 <section class="sec">
 <div class="wrap">
@@ -245,7 +255,7 @@ gtag('config','%(ga)s');
 </html>
 """ % dict(
         htmllang=L['htmllang'], title=L['title'], desc=L['desc'], base=BASE, path=p,
-        hreflangs=hreflangs(), ga=GA, fonthref=L['fonthref'], fontvars=L['fontvars'], css=CSS,
+        hreflangs=hreflangs(), ga=GA, fonthref=L['fonthref'].replace('&display=swap', '&family=Yuji+Syuku&display=swap'), fontvars=L['fontvars'], css=CSS, news=home_section(code),
         nav=langs_nav(code), nav_footer=langs_nav(code),
         alt_hero=L['alt_hero'], alt_video=L['alt_video'], video_cap_pre=L['video_cap_pre'], video_cap_post=L['video_cap_post'],
         h1=L['h1'], hero_sub=L['hero_sub'], hero_meta=L['hero_meta'], promo=L['promo'],
@@ -260,6 +270,25 @@ gtag('config','%(ga)s');
     )
 
 LANGS = {}
+
+MENU_DESCRIPTIONS = {
+    'en': [
+        'Mazesoba made with satisfying, extra-thick noodles from Japanese mochi wheat. Change the flavour with flying-fish vinegar and black pepper as you eat. Add extra spring onion for a crisp texture or chunk chashu for a hearty topping, and make the bowl your own.',
+        'A light soy-sauce broth combining a kombu umami base with pork and chicken stock. Its savoury flavour complements the hearty bite of extra-thick mochi-wheat noodles. Enjoy the balance of bold noodles, light broth and simple toppings to the very last mouthful.'
+    ],
+    'ko': [
+        '일본산 찹쌀밀로 만든 묵직한 굵은 면의 마제소바입니다. 날치 식초와 후추로 맛을 바꾸며 취향에 맞게 즐기세요. 파를 더해 아삭함을 살리거나 큼직한 차슈를 올려, 나만의 푸짐한 한 그릇을 즐기실 수 있습니다.',
+        '다시마의 감칠맛을 바탕으로 돼지고기와 닭 육수를 더한 담백한 간장 국물입니다. 찹쌀밀 굵은 면의 힘 있는 식감에 육수의 감칠맛이 어우러집니다. 굵은 면, 담백한 국물, 단순한 고명의 균형을 마지막 한입까지 즐겨주세요.'
+    ],
+    'zh-hans': [
+        '采用日本国产糯小麦制作的极粗面，口感扎实、满足感十足。品尝时可加入烤飞鱼醋或黑胡椒，享受味道的变化。加葱增添爽脆口感，或搭配大块叉烧，按自己的喜好豪迈地享用一碗拌面。',
+        '以昆布鲜味为基础，结合猪肉与鸡肉高汤的清爽酱油汤。糯小麦极粗面富有咀嚼感，与高汤的鲜味相互衬托。请细细品味粗面、清淡汤底与简单配料的平衡，直到最后一口。'
+    ],
+    'zh-hant': [
+        '採用日本國產糯小麥製作的極粗麵，口感紮實、滿足感十足。品嚐時可加入烤飛魚醋或黑胡椒，享受味道的變化。加蔥增添爽脆口感，或搭配大塊叉燒，按自己的喜好豪邁地享用一碗拌麵。',
+        '以昆布鮮味為基礎，結合豬肉與雞肉高湯的清爽醬油湯。糯小麥極粗麵富有咀嚼感，與高湯的鮮味相互襯托。請細細品味粗麵、清淡湯底與簡單配料的平衡，直到最後一口。'
+    ],
+}
 
 LANGS['en'] = dict(
     htmllang='en',
