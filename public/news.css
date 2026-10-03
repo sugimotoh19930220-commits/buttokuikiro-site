@@ -1,0 +1,38 @@
+.news-section{background:#0a0908;color:#f5f1e8;padding:clamp(38px,6vw,72px) clamp(20px,5vw,56px);scroll-margin-top:80px}
+.news-wrap{max-width:900px;margin:auto}
+.news-heading{display:flex;align-items:baseline;justify-content:space-between;gap:20px;margin-bottom:22px}
+.news-heading h2{margin:0;color:#f5f1e8;font:400 clamp(30px,4vw,46px)/1.3 var(--fd,'Yuji Syuku',serif)}
+.news-kicker{color:#e0391f;letter-spacing:.18em;font:400 13px/1.4 sans-serif}
+.news-list{border-top:2px solid #e0391f}
+.news-entry{display:grid;grid-template-columns:110px 82px minmax(0,1fr) 72px 18px;gap:18px;align-items:center;padding:20px 0;border-bottom:1px solid rgba(245,241,232,.2);color:#f5f1e8;text-decoration:none}
+.news-entry:hover{color:#f5f1e8;background:rgba(245,241,232,.035)}
+.news-entry[hidden]{display:none}
+.news-date{color:rgba(245,241,232,.68);font-family:'Yuji Syuku',serif;font-size:15px;letter-spacing:.03em;white-space:nowrap}
+.news-category{color:#e0391f;font-size:14px}
+.news-copy{min-width:0}
+.news-title{display:block;font-size:clamp(17px,1.9vw,22px);line-height:1.6;font-weight:400}
+.news-summary{display:block;margin-top:5px;color:rgba(245,241,232,.7);font-size:14px;line-height:1.8}
+.news-thumb{width:72px;height:72px;object-fit:cover;object-position:50% 62%;display:block}
+.news-arrow{color:#e0391f;font-size:22px}
+.news-actions{text-align:right;margin-top:24px}
+.news-actions a,.news-back{color:#f5f1e8;border-bottom:1px solid #e0391f;padding:9px 0;display:inline-block;font-size:16px}
+.news-actions a:hover,.news-back:hover{color:#e0391f}
+.news-entry:focus-visible,.news-actions a:focus-visible,.news-back:focus-visible{outline:2px solid #e0391f;outline-offset:5px}
+.news-important{border-left:3px solid #e0391f;padding:12px 18px;margin-bottom:24px}
+.news-page{margin:0;background:#0a0908;color:#f5f1e8;font-family:var(--fb,'Yuji Syuku',serif);line-height:1.8}
+.news-header{border-bottom:1px solid rgba(245,241,232,.2);padding:20px clamp(20px,5vw,56px);display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
+.news-header img{height:36px;width:auto;max-width:100%;filter:invert(1)}
+.news-languages{display:flex;gap:12px;flex-wrap:wrap;font:14px/1.7 system-ui,sans-serif}
+.news-languages a{color:#f5f1e8;text-decoration:none}
+.news-languages a[aria-current]{color:#e0391f}
+.news-article{max-width:780px;margin:auto;padding:clamp(40px,7vw,80px) clamp(20px,5vw,40px)}
+.news-meta{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
+.news-article h1{font:400 clamp(28px,4vw,44px)/1.5 var(--fd,'Yuji Syuku',serif);margin:18px 0 28px;overflow-wrap:anywhere}
+.news-article p{font-size:16px;margin:20px 0;line-height:2;text-wrap:pretty}
+.news-article a{color:#e0391f}
+.news-article .news-back{color:#f5f1e8;margin-top:30px}
+.news-article .news-image{width:100%;max-width:520px;height:auto;margin:30px auto 0;display:block}
+.news-article figcaption{font-size:13px;color:rgba(245,241,232,.65);text-align:center;margin:10px 0 26px}
+.news-footer{border-top:1px solid rgba(245,241,232,.2);padding:24px;text-align:center;font-size:14px;color:rgba(245,241,232,.65)}
+:lang(ja) .news-section,:lang(ja).news-page{font-family:'Yuji Syuku',serif}
+@media(max-width:640px){.news-entry{grid-template-columns:auto 1fr 54px 16px;gap:6px 12px;padding:18px 0}.news-date{grid-column:1;grid-row:1}.news-category{grid-column:2;grid-row:1}.news-copy{grid-column:1/3;grid-row:2}.news-thumb{grid-column:3;grid-row:1/3;width:54px;height:64px}.news-arrow{grid-column:4;grid-row:1/3}.news-heading{gap:12px}.news-summary{font-size:14px}.news-title{font-size:18px}}
