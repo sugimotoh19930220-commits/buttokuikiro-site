@@ -91,6 +91,9 @@ def hreflangs():
 def build(code, L):
     p = PATHS[code]
     menu = []
+    menu.append('<div class="mgrp" id="tsukemen"><h3>%s</h3>' % L['tsukemen_heading'])
+    menu.append('<div class="mrow"><s>%s</s><em>%s</em></div>' % (L['tsukemen_name'], L['tsukemen_price']))
+    menu.append('<div class="end"></div><p>%s</p><p class="note">%s</p></div>' % (L['tsukemen_description'], L['tsukemen_note']))
     for gname, items in L['menu_groups']:
         menu.append('<div class="mgrp"><h3>%s</h3>' % gname)
         for name, price in items:
@@ -281,6 +284,11 @@ LANGS['en'] = dict(
     ],
     menu_lab='Menu',
     menu_h2='Prices',
+    tsukemen_heading='KOMBU WATER TSUKEMEN (dipping noodles)',
+    tsukemen_name='Buttoi Kombu Water Tsukemen',
+    tsukemen_price='1,580 yen',
+    tsukemen_description='Hand-rubbed, extra-thick noodles made from Japanese mochi wheat, served in kombu water with niboshi (dried sardine) flavour. Enjoy with our special dipping broth, or with rock salt and yuzu kosho (citrus chilli paste).',
+    tsukemen_note='Not available on the 22nd of each month (Buttoku Day).',
     menu_groups=[
         ('MAZESOBA (no soup)', [
             ('Buttoi Mazesoba', '980 yen'),
@@ -371,6 +379,11 @@ LANGS['ko'] = dict(
     ],
     menu_lab='메뉴',
     menu_h2='가격',
+    tsukemen_heading='다시마물 츠케멘 (찍어 먹는 면)',
+    tsukemen_name='붓토이 다시마물 츠케멘',
+    tsukemen_price='1,580엔',
+    tsukemen_description='일본산 찹쌀밀로 만든 손으로 주무른 굵은 면을 니보시(말린 멸치) 향의 다시마물에 담아 제공합니다. 특제 찍어 먹는 국물은 물론 암염과 유즈코쇼(유자 고추 양념)로도 즐기실 수 있습니다.',
+    tsukemen_note='매월 22일(붓토쿠의 날)에는 판매하지 않습니다.',
     menu_groups=[
         ('마제소바 (국물 없음)', [
             ('붓토이 마제소바', '980엔'),
@@ -461,6 +474,11 @@ LANGS['zh-hans'] = dict(
     ],
     menu_lab='菜单',
     menu_h2='价格',
+    tsukemen_heading='昆布水蘸面',
+    tsukemen_name='超粗昆布水蘸面',
+    tsukemen_price='1,580日元',
+    tsukemen_description='日本产糯小麦制成的手工揉制超粗面，浸在带有小鱼干香气的昆布水中。可蘸特制汤汁享用，也可搭配岩盐和柚子胡椒（柚子辣椒调味料）。',
+    tsukemen_note='每月22日（“ぶっとくの日”）不销售。',
     menu_groups=[
         ('拌面（无汤）', [
             ('超粗拌面', '980日元'),
@@ -551,6 +569,11 @@ LANGS['zh-hant'] = dict(
     ],
     menu_lab='菜單',
     menu_h2='價格',
+    tsukemen_heading='昆布水沾麵',
+    tsukemen_name='超粗昆布水沾麵',
+    tsukemen_price='1,580日圓',
+    tsukemen_description='日本產糯小麥製成的手工揉製超粗麵，浸在帶有小魚乾香氣的昆布水中。可沾特製湯汁享用，也可搭配岩鹽與柚子胡椒（柚子辣椒調味料）。',
+    tsukemen_note='每月22日（「ぶっとくの日」）不販售。',
     menu_groups=[
         ('拌麵（無湯）', [
             ('超粗拌麵', '980日圓'),
