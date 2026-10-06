@@ -11,14 +11,18 @@ from html import escape
 from pathlib import Path
 
 BASE = 'https://buttokuikiro.com'
-PUBLISHED = '2026-10-03'
+PUBLISHED = ['2026-10-07', '2026-10-03', '2026-10-03', '2026-10-03']
+# Keep the original articles' metadata; no unconfirmed publication time for the new article.
+PUBLISHED_AT = ['2026-10-07', '2026-10-03T12:00:00+09:00', '2026-10-03T12:00:00+09:00', '2026-10-03T12:00:00+09:00']
 ROOT = Path(__file__).resolve().parents[1] / 'public'
 CODES = ['ja', 'en', 'ko', 'zh-hans', 'zh-hant']
 NAMES = ['日本語', 'English', '한국어', '简体中文', '繁體中文']
 HREFLANG = ['ja', 'en', 'ko', 'zh-Hans', 'zh-Hant']
-SLUGS = ['2026-10-duck-mazesoba', '2026-10-opening-hours', '2026-10-buttoku-day']
-SOURCES = ['https://www.instagram.com/buttoi_men/p/Dd6rGQXSfj1/', 'https://www.instagram.com/buttoi_men/p/Dd4N_flSf1y/', 'https://www.instagram.com/buttoi_men/p/Dd4N_flSf1y/']
-EXPIRY = ['2026-10-31', '2026-10-31', '2026-10-22']
+SLUGS = ['2026-10-07-noodle-update', '2026-10-duck-mazesoba', '2026-10-opening-hours', '2026-10-buttoku-day']
+# The noodle update is approved directly by Sugimoto, not an Instagram repost.
+SOURCES = [None, 'https://www.instagram.com/buttoi_men/p/Dd6rGQXSfj1/', 'https://www.instagram.com/buttoi_men/p/Dd4N_flSf1y/', 'https://www.instagram.com/buttoi_men/p/Dd4N_flSf1y/']
+EXPIRY = [None, '2026-10-31', '2026-10-31', '2026-10-22']
+IMAGES = [None, '/news-duck-202610.jpg', None, None]
 # Urgent closures, when approved, belong here rather than in the ordinary list.
 IMPORTANT = {code: [] for code in CODES}
 TEXT = {
@@ -54,24 +58,53 @@ TEXT = {
      ['10月22日（週四）是「ぶっとく之日」，招牌拌麵含稅500日圓。','當天11:30–21:00全天營業，最後點餐20:30，下午不休息。','當天僅供應拌麵，不供應拉麵、昆布水蘸麵和限定菜單。']]),
 }
 
+# One approved announcement, with equivalent copy in every existing language.
+NOODLE_UPDATE = {
+ 'ja': dict(category='商品案内', title='麺がさらに美味しくなりました！',
+   summary='国産もち小麦の使用割合を約8割へ。もちもちとした食感がさらに強くなりました。',
+   body=['麺の仕入れ先を村上朝日製麺へ変更し、製麺に使用する切刃も3番から4番へ変更しました。',
+         '国産もち小麦の使用割合を、従来の約3割から約8割へ高めたことで、もちもちとした食感がさらに強くなりました。茹で時間も短くなり、これまで以上に美味しくなった麺を、ぜひお楽しみください。']),
+ 'en': dict(category='Menu news', title='Our noodles are now even more delicious!',
+   summary='Japanese mochi wheat now makes up approximately 80% of the blend, for an even chewier texture.',
+   body=['We have switched our noodle supplier to 村上朝日製麺 and changed the noodle-making cutter from No. 3 to No. 4.',
+         'Increasing the proportion of Japanese mochi wheat from approximately 30% to approximately 80% has made the noodles even chewier. They also take less time to boil. Come and enjoy our more delicious noodles!']),
+ 'ko': dict(category='메뉴 소식', title='면이 더욱 맛있어졌습니다!',
+   summary='일본산 모치밀의 사용 비율을 약 80%로 높여 쫄깃한 식감이 더욱 좋아졌습니다.',
+   body=['면 공급 업체를 村上朝日製麺으로 변경하고, 제면에 사용하는 절단날도 3번에서 4번으로 변경했습니다.',
+         '일본산 모치밀의 사용 비율을 기존 약 30%에서 약 80%로 높여 쫄깃한 식감이 더욱 좋아졌습니다. 면을 삶는 시간도 짧아졌습니다. 더욱 맛있어진 면을 즐겨보세요!']),
+ 'zh-hans': dict(category='菜单消息', title='面条变得更加美味了！',
+   summary='日本国产糯小麦的使用比例提高至约80%，口感更加软糯弹牙。',
+   body=['我们将面条供应商更换为村上朝日製麺，并将制面使用的切面刀由3号改为4号。',
+         '日本国产糯小麦的使用比例由原来的约30%提高至约80%，让面条更加软糯弹牙。煮面时间也缩短了。欢迎品尝更加美味的面条！']),
+ 'zh-hant': dict(category='菜單消息', title='麵條變得更加美味了！',
+   summary='日本國產糯小麥的使用比例提高至約80%，口感更加軟糯彈牙。',
+   body=['我們將麵條供應商更換為村上朝日製麺，並將製麵使用的切麵刀由3號改為4號。',
+         '日本國產糯小麥的使用比例由原來的約30%提高至約80%，讓麵條更加軟糯彈牙。煮麵時間也縮短了。歡迎品嚐更加美味的麵條！']),
+}
+for code, update in NOODLE_UPDATE.items():
+    for key, value in [('categories', update['category']), ('titles', update['title']),
+                       ('summaries', update['summary']), ('bodies', update['body'])]:
+        TEXT[code][key].insert(0, value)
+
 def prefix(code):
     return '' if code == 'ja' else '/' + code
 
 def news_path(code, slug=''):
     return prefix(code) + '/news/' + (slug + '/' if slug else '')
 
-def rows(code):
+def rows(code, limit=None):
     L = TEXT[code]
     result = []
-    for i, slug in enumerate(SLUGS):
-        thumb = '<img class="news-thumb" src="/news-duck-202610.jpg" alt="" width="72" height="72" loading="lazy">' if i == 0 else '<span></span>'
-        result.append('<a class="news-entry" data-valid-until="%s" href="%s"><time class="news-date" datetime="%s">%s</time><span class="news-category">%s</span><span class="news-copy"><span class="news-title">%s</span><span class="news-summary">%s</span></span>%s<span class="news-arrow" aria-hidden="true">→</span></a>' % (EXPIRY[i], news_path(code, slug), PUBLISHED, PUBLISHED.replace('-', '.'), escape(L['categories'][i]), escape(L['titles'][i]), escape(L['summaries'][i]), thumb))
+    for i, slug in enumerate(SLUGS[:limit]):
+        thumb = '<img class="news-thumb" src="%s" alt="" width="72" height="72" loading="lazy">' % IMAGES[i] if IMAGES[i] else '<span></span>'
+        expiry = ' data-valid-until="%s"' % EXPIRY[i] if EXPIRY[i] else ''
+        result.append('<a class="news-entry"%s href="%s"><time class="news-date" datetime="%s">%s</time><span class="news-category">%s</span><span class="news-copy"><span class="news-title">%s</span><span class="news-summary">%s</span></span>%s<span class="news-arrow" aria-hidden="true">→</span></a>' % (expiry, news_path(code, slug), PUBLISHED[i], PUBLISHED[i].replace('-', '.'), escape(L['categories'][i]), escape(L['titles'][i]), escape(L['summaries'][i]), thumb))
     return '\n'.join(result)
 
 def home_section(code):
     L = TEXT[code]
     important = ''.join('<div class="news-important">%s</div>' % escape(x) for x in IMPORTANT[code])
-    return '<!-- NEWS START -->\n<section class="news-section" id="news" aria-labelledby="news-heading"><div class="news-wrap"><div class="news-heading"><h2 id="news-heading">%s</h2><span class="news-kicker">NEWS</span></div>%s<div class="news-list">%s</div><div class="news-actions"><a href="%s">%s　→</a></div></div></section>\n<script>(function(){var today=new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Tokyo"}).format(new Date());document.querySelectorAll("#news [data-valid-until]").forEach(function(a){if(a.dataset.validUntil<today)a.hidden=true;});})();</script>\n<!-- NEWS END -->' % (escape(L['heading']), important, rows(code), news_path(code), escape(L['all']))
+    return '<!-- NEWS START -->\n<section class="news-section" id="news" aria-labelledby="news-heading"><div class="news-wrap"><div class="news-heading"><h2 id="news-heading">%s</h2><span class="news-kicker">NEWS</span></div>%s<div class="news-list">%s</div><div class="news-actions"><a href="%s">%s　→</a></div></div></section>\n<script>(function(){var today=new Intl.DateTimeFormat("sv-SE",{timeZone:"Asia/Tokyo"}).format(new Date());document.querySelectorAll("#news [data-valid-until]").forEach(function(a){if(a.dataset.validUntil<today)a.hidden=true;});})();</script>\n<!-- NEWS END -->' % (escape(L['heading']), important, rows(code, limit=3), news_path(code), escape(L['all']))
 
 def document(code, slug=None):
     L = TEXT[code]
@@ -97,9 +130,10 @@ def document(code, slug=None):
     else:
         i = SLUGS.index(slug)
         description = L['summaries'][i]
-        picture = '<figure style="margin:0"><img class="news-image" src="/news-duck-202610.jpg" alt="%s" width="1402" height="1752"><figcaption>%s</figcaption></figure>' % (escape(L['titles'][i]), escape(L['caption'])) if i == 0 else ''
-        content = '<article class="news-article"><div class="news-meta"><time class="news-date" datetime="%s">%s</time><span class="news-category">%s</span></div><h1>%s</h1>%s%s<p><a href="%s" target="_blank" rel="noopener">%s</a></p><a class="news-back" href="%s">← %s</a></article>' % (PUBLISHED, PUBLISHED.replace('-', '.'), escape(L['categories'][i]), escape(title), ''.join('<p>%s</p>' % escape(x) for x in L['bodies'][i]), picture, SOURCES[i], escape(L['source']), news_path(code), escape(L['back']))
-        schema = '<script type="application/ld+json">%s</script>' % json.dumps({'@context':'https://schema.org','@type':'NewsArticle','headline':title,'description':description,'datePublished':PUBLISHED+'T12:00:00+09:00','dateModified':PUBLISHED+'T12:00:00+09:00','inLanguage':code,'mainEntityOfPage':BASE+current,'author':{'@type':'Organization','name':'麺屋 ぶっとく生きろ。','url':BASE+'/'},'image':[BASE+'/news-duck-202610.jpg'] if i == 0 else []}, ensure_ascii=False)
+        picture = '<figure style="margin:0"><img class="news-image" src="%s" alt="%s" width="1402" height="1752"><figcaption>%s</figcaption></figure>' % (IMAGES[i], escape(L['titles'][i]), escape(L['caption'])) if IMAGES[i] else ''
+        source_link = '<p><a href="%s" target="_blank" rel="noopener">%s</a></p>' % (SOURCES[i], escape(L['source'])) if SOURCES[i] else ''
+        content = '<article class="news-article"><div class="news-meta"><time class="news-date" datetime="%s">%s</time><span class="news-category">%s</span></div><h1>%s</h1>%s%s%s<a class="news-back" href="%s">← %s</a></article>' % (PUBLISHED[i], PUBLISHED[i].replace('-', '.'), escape(L['categories'][i]), escape(title), ''.join('<p>%s</p>' % escape(x) for x in L['bodies'][i]), picture, source_link, news_path(code), escape(L['back']))
+        schema = '<script type="application/ld+json">%s</script>' % json.dumps({'@context':'https://schema.org','@type':'NewsArticle','headline':title,'description':description,'datePublished':PUBLISHED_AT[i],'dateModified':PUBLISHED_AT[i],'inLanguage':code,'mainEntityOfPage':BASE+current,'author':{'@type':'Organization','name':'麺屋 ぶっとく生きろ。','url':BASE+'/'},'image':[BASE+IMAGES[i]] if IMAGES[i] else []}, ensure_ascii=False)
     return '<!DOCTYPE html>\n<html lang="%s"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>%s｜麺屋 ぶっとく生きろ。</title><meta name="description" content="%s"><link rel="canonical" href="%s%s">%s<link rel="icon" href="/favicon.ico"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="%s"><link rel="stylesheet" href="/news.css"><style>*{box-sizing:border-box}:root{%s}</style><script async src="https://www.googletagmanager.com/gtag/js?id=G-BLYH7L3V1X"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-BLYH7L3V1X");</script>%s</head><body class="news-page"><header class="news-header"><a href="%s/"><img src="/logo-brush-trim.png" alt="麺屋 ぶっとく生きろ。" width="1200" height="323"></a><nav class="news-languages" aria-label="Language">%s</nav></header><main>%s</main><footer class="news-footer">MENYA BUTTOKUIKIRO · © 2026</footer></body></html>\n' % (code, escape(title), escape(description, quote=True), BASE, current, '\n'.join(alternates), escape(fonts, quote=True), variables, schema, prefix(code), ''.join(nav), content)
 
 def main():
@@ -124,10 +158,10 @@ def main():
     sitemap = ROOT / 'sitemap.xml'
     text = sitemap.read_text(encoding='utf-8')
     text = re.sub(r'\s*<url><loc>https://buttokuikiro.com/(?:en/|ko/|zh-hans/|zh-hant/)?news/.*?</url>', '', text)
-    additions = ['  <url><loc>%s%s</loc><lastmod>%s</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>' % (BASE, news_path(c, slug or ''), PUBLISHED) for c in CODES for slug in [None] + SLUGS]
+    additions = ['  <url><loc>%s%s</loc><lastmod>%s</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>' % (BASE, news_path(c, slug or ''), PUBLISHED[SLUGS.index(slug)] if slug else max(PUBLISHED)) for c in CODES for slug in [None] + SLUGS]
     text = text.replace('</urlset>', '\n'.join(additions) + '\n</urlset>')
     sitemap.write_text(text, encoding='utf-8')
-    print('Built news in 5 languages: latest 3 entries, archives, 15 detail pages.')
+    print('Built news in 5 languages: latest 3 entries, archives, %d detail pages.' % (len(CODES) * len(SLUGS)))
 
 if __name__ == '__main__':
     main()
