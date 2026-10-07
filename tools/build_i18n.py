@@ -208,7 +208,7 @@ gtag('config','%(ga)s');
 <h2>%(info_h2)s</h2>
 <dl style="margin-top:24px">%(info)s<div class="end"></div></dl>
 <div class="btns">
-<a href="https://www.google.com/maps/search/?api=1&amp;query=%(mapq)s" target="_blank" rel="noopener">%(cta_map)s</a>
+<a href="https://www.google.com/maps?cid=4476702065806107861" target="_blank" rel="noopener">%(cta_map)s</a>
 <a href="tel:0665637763">%(cta_call)s</a>
 <a href="https://www.instagram.com/buttoi_men/" target="_blank" rel="noopener">Instagram</a>
 </div>
@@ -233,7 +233,7 @@ gtag('config','%(ga)s');
 
 <div class="bar">
 <a class="c" href="tel:0665637763">%(bar_call)s</a>
-<a class="m" href="https://www.google.com/maps/search/?api=1&amp;query=%(mapq)s" target="_blank" rel="noopener">%(bar_map)s</a>
+<a class="m" href="https://www.google.com/maps?cid=4476702065806107861" target="_blank" rel="noopener">%(bar_map)s</a>
 </div>
 
 <script>
@@ -266,7 +266,6 @@ gtag('config','%(ga)s');
         notes_lab=L['notes_lab'], notes_h2=L['notes_h2'], notes=notes,
         cta_map=L['cta_map'], cta_call=L['cta_call'], bar_call=L['bar_call'], bar_map=L['bar_map'],
         ga_note=L['ga_note'],
-        mapq='%E9%BA%BA%E5%B1%8B%20%E3%81%B6%E3%81%A3%E3%81%A8%E3%81%8F%E7%94%9F%E3%81%8D%E3%82%8D%E3%80%82%20%E5%A4%A7%E9%98%AA%E5%B8%82%E4%B8%AD%E5%A4%AE%E5%8C%BA%E5%8D%97%E6%9C%AC%E7%94%BA3%E4%B8%81%E7%9B%AE3-17%20%E4%B8%B8%E6%9D%BE%E3%83%93%E3%83%ABB1',
     )
 
 LANGS = {}
@@ -294,8 +293,8 @@ LANGS['en'] = dict(
     htmllang='en',
     fonthref='https://fonts.googleapis.com/css2?family=Anton&family=Shippori+Mincho+B1:wght@400&display=swap',
     fontvars="--fd:'Anton',Impact,sans-serif;--fb:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--fw:400",
-    title='MENYA BUTTOKUIKIRO | Extra-thick noodles in Hommachi, Osaka',
-    desc='A ramen and mazesoba shop 1 minute from Hommachi Station, Osaka. Extra-thick hand-rubbed noodles made from Japanese mochi wheat. Mazesoba from 980 yen. 16 seats, cash and cards accepted.',
+    title='MENYA BUTTOKUIKIRO | Mazesoba, ramen and kombu-water tsukemen in Hommachi',
+    desc='Mazesoba, soy-sauce ramen and kombu-water tsukemen with extra-thick hand-rubbed Japanese mochi-wheat noodles. 1 minute from Hommachi Station exits 7 and 9, Osaka. Mazesoba from 980 yen including tax. See menus, opening hours and news.',
     alt_hero='Lifting the extra-thick noodles',
     alt_video='Cooking at MENYA BUTTOKUIKIRO',
     video_cap_pre='Video courtesy of Instagram (', video_cap_post=')',
@@ -389,8 +388,8 @@ LANGS['ko'] = dict(
     htmllang='ko',
     fonthref='https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&family=Shippori+Mincho+B1:wght@400&display=swap',
     fontvars="--fd:'Noto Sans KR',sans-serif;--fb:'Noto Sans KR',sans-serif;--fw:900",
-    title='멘야 붓토쿠이키로 | 오사카 혼마치의 굵은 면 라멘·마제소바',
-    desc='오사카 혼마치역에서 도보 1분. 일본산 찹쌀밀로 만든 손으로 주무른 굵은 면. 마제소바 980엔부터. 16석, 현금·카드 사용 가능.',
+    title='멘야 붓토쿠이키로 | 혼마치 마제소바·라멘·다시마물 츠케멘',
+    desc='일본산 찹쌀밀로 만든 손으로 주무른 굵은 면의 마제소바·간장 라멘·다시마물 츠케멘. 오사카 혼마치역 7·9번 출구에서 도보 1분. 마제소바는 세금 포함 980엔부터. 메뉴·영업시간·최신 소식을 확인하세요.',
     alt_hero='굵은 면을 들어 올린 모습',
     alt_video='조리 모습',
     video_cap_pre='영상 제공: Instagram (', video_cap_post=')',
@@ -484,8 +483,8 @@ LANGS['zh-hans'] = dict(
     htmllang='zh-Hans',
     fonthref='https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Shippori+Mincho+B1:wght@400&display=swap',
     fontvars="--fd:'Noto Sans SC',sans-serif;--fb:'Noto Sans SC',sans-serif;--fw:900",
-    title='面屋 BUTTOKUIKIRO | 大阪本町的超粗面拉面·拌面',
-    desc='距大阪地铁本町站步行1分钟。使用日本产糯小麦、点单后手工揉制的超粗面。拌面980日元起。16个座位，可用现金和信用卡。',
+    title='面屋 BUTTOKUIKIRO | 大阪本町拌面·拉面·昆布水蘸面',
+    desc='使用日本产糯小麦手工揉制极粗面，提供拌面、酱油拉面及昆布水蘸面。距大阪本町站7·9号出口步行1分钟。拌面含税980日元起。查看菜单、营业时间与最新消息。',
     alt_hero='挑起超粗面条',
     alt_video='店内烹调',
     video_cap_pre='影像提供：Instagram（', video_cap_post='）',
@@ -579,8 +578,8 @@ LANGS['zh-hant'] = dict(
     htmllang='zh-Hant',
     fonthref='https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&family=Shippori+Mincho+B1:wght@400&display=swap',
     fontvars="--fd:'Noto Sans TC',sans-serif;--fb:'Noto Sans TC',sans-serif;--fw:900",
-    title='麵屋 BUTTOKUIKIRO | 大阪本町的超粗麵拉麵·拌麵',
-    desc='距大阪地鐵本町站步行1分鐘。使用日本產糯小麥、點餐後手工揉製的超粗麵。拌麵980日圓起。16個座位，可用現金與信用卡。',
+    title='麵屋 BUTTOKUIKIRO | 大阪本町拌麵·拉麵·昆布水沾麵',
+    desc='使用日本產糯小麥手工揉製極粗麵，提供拌麵、醬油拉麵及昆布水沾麵。距大阪本町站7·9號出口步行1分鐘。拌麵含稅980日圓起。查看菜單、營業時間與最新消息。',
     alt_hero='挑起超粗麵條',
     alt_video='店內烹調',
     video_cap_pre='影像提供：Instagram（', video_cap_post='）',
