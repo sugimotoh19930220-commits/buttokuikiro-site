@@ -208,7 +208,7 @@ gtag('config','%(ga)s');
 <h2>%(info_h2)s</h2>
 <dl style="margin-top:24px">%(info)s<div class="end"></div></dl>
 <div class="btns">
-<a href="https://www.google.com/maps/search/?api=1&amp;query=%(mapq)s" target="_blank" rel="noopener">%(cta_map)s</a>
+<a href="https://www.google.com/maps?cid=4476702065806107861" target="_blank" rel="noopener">%(cta_map)s</a>
 <a href="tel:0665637763">%(cta_call)s</a>
 <a href="https://www.instagram.com/buttoi_men/" target="_blank" rel="noopener">Instagram</a>
 </div>
@@ -233,7 +233,7 @@ gtag('config','%(ga)s');
 
 <div class="bar">
 <a class="c" href="tel:0665637763">%(bar_call)s</a>
-<a class="m" href="https://www.google.com/maps/search/?api=1&amp;query=%(mapq)s" target="_blank" rel="noopener">%(bar_map)s</a>
+<a class="m" href="https://www.google.com/maps?cid=4476702065806107861" target="_blank" rel="noopener">%(bar_map)s</a>
 </div>
 
 <script>
@@ -679,3 +679,4 @@ if __name__ == '__main__':
         with open(f, 'w', encoding='utf-8') as fp:
             fp.write(build(code, L))
         print('wrote', os.path.relpath(f, root), len(build(code, L)), 'chars')
+
