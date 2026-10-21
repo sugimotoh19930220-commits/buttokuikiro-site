@@ -10,6 +10,7 @@
 日本語版（public/index.html）はこのスクリプトの対象外。手で編集する。
 """
 import os
+from analytics import ANALYTICS_TAG
 from build_news import home_section
 
 BASE = 'https://buttokuikiro.com'
@@ -133,12 +134,7 @@ def build(code, L):
 <meta name="twitter:image" content="%(base)s/ogp.jpg">
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script async src="https://www.googletagmanager.com/gtag/js?id=%(ga)s"></script>
-<script>
-window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}
-gtag('js',new Date());
-gtag('config','%(ga)s');
-</script>
+%(analytics)s
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="%(fonthref)s" rel="stylesheet">
@@ -255,7 +251,7 @@ gtag('config','%(ga)s');
 </html>
 """ % dict(
         htmllang=L['htmllang'], title=L['title'], desc=L['desc'], base=BASE, path=p,
-        hreflangs=hreflangs(), ga=GA, fonthref=L['fonthref'].replace('&display=swap', '&family=Yuji+Syuku&display=swap'), fontvars=L['fontvars'], css=CSS, news=home_section(code),
+        hreflangs=hreflangs(), analytics=ANALYTICS_TAG, ga=GA, fonthref=L['fonthref'].replace('&display=swap', '&family=Yuji+Syuku&display=swap'), fontvars=L['fontvars'], css=CSS, news=home_section(code),
         nav=langs_nav(code), nav_footer=langs_nav(code),
         alt_hero=L['alt_hero'], alt_video=L['alt_video'], video_cap_pre=L['video_cap_pre'], video_cap_post=L['video_cap_post'],
         h1=L['h1'], hero_sub=L['hero_sub'], hero_meta=L['hero_meta'], promo=L['promo'],
