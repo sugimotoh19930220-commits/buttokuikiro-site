@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<title>確認用アクセスの設定｜麺屋 ぶっとく生きろ。</title>
+<script>window['ga-disable-G-BLYH7L3V1X']=true;</script>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#f5f2ed;color:#29241e;font:16px/1.8 system-ui,-apple-system,sans-serif}main{max-width:660px;margin:40px auto;padding:28px;background:white;border:1px solid #ded8cd;border-radius:12px}h1{font-size:24px;line-height:1.5;margin:8px 0 20px}p{margin:16px 0}.label{font-size:14px;color:#665b4d}.status{padding:16px;background:#f1eee8;border-left:4px solid #74644e;font-weight:700}button{display:block;width:100%;padding:14px;margin:16px 0;font:inherit;line-height:1.5;border-radius:8px;cursor:pointer;border:1px solid #62503c;background:#493a2b;color:#fff}button.secondary{background:white;color:#493a2b}button:disabled{opacity:.6;cursor:default}a{color:#774118;text-underline-offset:3px}.small{font-size:14px;color:#665b4d}a.continue{display:block;text-align:center;padding:12px;border:1px solid #c4b9a8;border-radius:8px}a[hidden]{display:none}@media(max-width:700px){main{margin:16px;padding:20px}h1{font-size:22px}}
+</style>
+</head>
+<body><main>
+<div class="label">麺屋 ぶっとく生きろ。｜関係者向け</div>
+<h1>確認用アクセスの設定</h1>
+<p>このブラウザで公式サイトを確認した閲覧・地図・電話・食べログ・採用などの操作を、このサイトのGoogleアナリティクス（GA4）へ送らない設定です。</p>
+<p id="status" class="status" role="status" aria-live="polite">設定を確認しています。</p>
+<button id="enable" type="button" disabled>このブラウザを集計から除外する</button>
+<a id="continue" class="continue" href="/" hidden>設定した状態で公式サイトを開く</a>
+<details><summary>設定の解除</summary>
+<p class="small">解除後に公式サイトを開き直すと、通常のアクセスとして集計されます。</p>
+<button id="disable" class="secondary" type="button" disabled>集計の除外を解除する</button>
+</details>
+<p class="small">パソコン・スマートフォン・別のブラウザでは、それぞれ設定してください。閲覧中のサイトに「確認用アクセス：集計対象外」と表示されることを毎回確認してください。すでに開いていた公式サイトのタブは、設定後に再読み込みしてください。</p>
+<p class="small">ブラウザのデータ削除やプライベート閲覧などでは設定が失われる場合があります。Google検索・Googleマップ側の集計、外部サイト、過去のアクセスには適用されません。この設定ページ自体はGA4で計測しません。</p>
+<noscript><p>設定にはJavaScriptが必要です。この状態では除外設定は完了していません。</p></noscript>
+</main>
+<script>
+(function(){
+  var key='buttoku-analytics-opt-out',status=document.getElementById('status');
+  var enable=document.getElementById('enable'),disable=document.getElementById('disable'),link=document.getElementById('continue');
+  function render(){
+    try{
+      var active=localStorage.getItem(key)==='1';
+      status.textContent=active?'設定済み：このブラウザは集計対象外です。':'未設定：このブラウザは通常の集計対象です。';
+      enable.disabled=active;disable.disabled=!active;link.hidden=!active;
+    }catch(e){failed();}
+  }
+  function failed(){status.textContent='設定を保存・確認できません。集計の除外は未確認です。ブラウザのサイトデータ保存を許可して、もう一度設定してください。';enable.disabled=false;disable.disabled=false;link.hidden=true;}
+  enable.addEventListener('click',function(){
+    try{localStorage.setItem(key,'1');if(localStorage.getItem(key)!=='1')throw new Error('not saved');render();}catch(e){failed();}
+  });
+  disable.addEventListener('click',function(){
+    try{localStorage.removeItem(key);if(localStorage.getItem(key)!==null)throw new Error('not removed');render();}catch(e){failed();}
+  });
+  window.addEventListener('storage',render);render();
+})();
+</script>
+</body></html>
