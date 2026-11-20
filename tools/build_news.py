@@ -91,23 +91,23 @@ for code, update in NOODLE_UPDATE.items():
 # The display window follows the confirmed November-only description.
 GINGER_PORK_SLUG = '2026-11-ginger-pork-mazesoba'
 GINGER_PORK = {
-    'ja': dict(title='11月限定「生姜焼きまぜそば」',
+    'ja': dict(caption='公式Instagramの告知画像', title='11月限定「生姜焼きまぜそば」',
                summary='たっぷりの生姜焼き肉をのせた、11月限定のまぜそばです。',
                body=['たっぷりの生姜焼き肉をのせた、11月限定のまぜそばです。刻み生姜・おろし生姜・刻みチャーシューを合わせた「しょうが玉」と、蘭王の卵黄をトッピング。具材を極太麺に絡めて、生姜の香りと肉の旨みをお楽しみください。',
                      '小盛200g・並盛300g　各1,580円（税込）']),
-    'en': dict(title='November Special: Ginger Pork Mazesoba',
+    'en': dict(caption='Official Instagram artwork', title='November Special: Ginger Pork Mazesoba',
                summary='Our November mazesoba is topped with a generous serving of ginger pork.',
                body=['Our November mazesoba is topped with a generous serving of ginger pork. It comes with a scoop of chopped ginger, grated ginger and chopped chashu, plus a Ran-O egg yolk. Mix the toppings into the extra-thick noodles and enjoy the aroma of ginger and the savoury pork.',
                      'Small (200 g) or regular (300 g): 1,580 yen each, including tax.']),
-    'ko': dict(title='11월 한정 「생강 돼지고기 마제소바」',
+    'ko': dict(caption='공식 Instagram 홍보 이미지', title='11월 한정 「생강 돼지고기 마제소바」',
                summary='생강 양념 돼지고기를 듬뿍 올린 11월 한정 마제소바입니다.',
                body=['생강 양념 돼지고기를 듬뿍 올린 11월 한정 마제소바입니다. 다진 생강, 간 생강, 다진 차슈를 뭉친 생강 토핑과 란오 달걀노른자를 올렸습니다. 재료를 아주 굵은 면에 섞어 생강의 향과 고기의 감칠맛을 즐겨 보세요.',
                      '소(200g)·보통(300g) 각 1,580엔(세금 포함)']),
-    'zh-hans': dict(title='11月限定「姜烧猪肉拌面」',
+    'zh-hans': dict(caption='官方Instagram宣传图片', title='11月限定「姜烧猪肉拌面」',
                     summary='铺上满满姜烧猪肉的11月限定拌面。',
                     body=['铺上满满姜烧猪肉的11月限定拌面，搭配由切碎的姜、磨成泥的姜和叉烧碎制成的姜球，以及兰王鸡蛋的蛋黄。将配料拌入极粗面条，享受姜的香气和猪肉的鲜美。',
                           '小份200克、标准份300克，每份1,580日元（含税）。']),
-    'zh-hant': dict(title='11月限定「薑燒豬肉拌麵」',
+    'zh-hant': dict(caption='官方Instagram宣傳圖片', title='11月限定「薑燒豬肉拌麵」',
                     summary='鋪上滿滿薑燒豬肉的11月限定拌麵。',
                     body=['鋪上滿滿薑燒豬肉的11月限定拌麵，搭配由切碎的薑、磨成泥的薑和叉燒碎製成的薑球，以及蘭王雞蛋的蛋黃。將配料拌入極粗麵條，享受薑的香氣和豬肉的鮮美。',
                           '小份200克、標準份300克，每份1,580日圓（含稅）。']),
@@ -117,7 +117,7 @@ PUBLISHED_AT.insert(0, '2026-11-01')
 SLUGS.insert(0, GINGER_PORK_SLUG)
 SOURCES.insert(0, 'https://www.instagram.com/buttoi_men/p/DfKTktZS9iS/')
 EXPIRY.insert(0, '2026-11-30')
-IMAGES.insert(0, None)
+IMAGES.insert(0, '/news-ginger-pork-202611.jpg')
 for code, article in GINGER_PORK.items():
     language = TEXT[code]
     language['categories'].insert(0, language['categories'][1])
@@ -170,7 +170,9 @@ def document(code, slug=None):
     else:
         i = SLUGS.index(slug)
         description = L['summaries'][i]
-        picture = '<figure style="margin:0"><img class="news-image" src="%s" alt="%s" width="1402" height="1752"><figcaption>%s</figcaption></figure>' % (IMAGES[i], escape(L['titles'][i]), escape(L['caption'])) if IMAGES[i] else ''
+        image_size = (1350, 1688) if slug == GINGER_PORK_SLUG else (1402, 1752)
+        caption = GINGER_PORK[code]['caption'] if slug == GINGER_PORK_SLUG else L['caption']
+        picture = '<figure style="margin:0"><img class="news-image" src="%s" alt="%s" width="%d" height="%d"><figcaption>%s</figcaption></figure>' % (IMAGES[i], escape(L['titles'][i]), *image_size, escape(caption)) if IMAGES[i] else ''
         source_label = '公式Instagramの商品告知' if code == 'ja' and slug == GINGER_PORK_SLUG else L['source']
         source_link = '<p><a href="%s" target="_blank" rel="noopener">%s</a></p>' % (SOURCES[i], escape(source_label)) if SOURCES[i] else ''
         content = '<article class="news-article"><div class="news-meta"><time class="news-date" datetime="%s">%s</time><span class="news-category">%s</span></div><h1>%s</h1>%s%s%s<a class="news-back" href="%s">← %s</a></article>' % (PUBLISHED[i], PUBLISHED[i].replace('-', '.'), escape(L['categories'][i]), escape(title), ''.join('<p>%s</p>' % escape(x) for x in L['bodies'][i]), picture, source_link, news_path(code), escape(L['back']))
