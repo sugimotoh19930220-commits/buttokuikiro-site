@@ -112,8 +112,8 @@ GINGER_PORK = {
                     body=['鋪上滿滿薑燒豬肉的11月限定拌麵，搭配由切碎的薑、磨成泥的薑和叉燒碎製成的薑球，以及蘭王雞蛋的蛋黃。將配料拌入極粗麵條，享受薑的香氣和豬肉的鮮美。',
                           '小份200克、標準份300克，每份1,580日圓（含稅）。']),
 }
-PUBLISHED.insert(0, '2026-11-20')
-PUBLISHED_AT.insert(0, '2026-11-20')
+PUBLISHED.insert(0, '2026-11-01')
+PUBLISHED_AT.insert(0, '2026-11-01')
 SLUGS.insert(0, GINGER_PORK_SLUG)
 SOURCES.insert(0, 'https://www.instagram.com/buttoi_men/p/DfKTktZS9iS/')
 EXPIRY.insert(0, '2026-11-30')
